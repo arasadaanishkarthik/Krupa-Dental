@@ -48,10 +48,10 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .glass-dark {
@@ -100,12 +100,11 @@
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center relative z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-playfair font-bold text-white transition-colors duration-300" id="nav-logo">
                 Krupa's<span class="text-gold">.</span>
             </a>
             
-            <!-- Desktop Links -->
             <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-white transition-colors duration-300" id="nav-links">
                 <a href="index.html" class="hover:text-gold transition">Home</a>
                 <a href="about.html" class="hover:text-gold transition">About</a>
@@ -113,35 +112,21 @@
                 <a href="#faq" class="hover:text-gold transition">FAQ</a>
             </div>
 
-            <!-- Navbar Buttons (Desktop) -->
-            <div class="hidden md:flex items-center space-x-3">
-                <a href="#contact" class="bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
-                    Book Appointment
-                </a>
-                <a href="#footer" class="bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
-                    Contact 
-                </a>
-            </div>
+            <!-- Linked to appointment.html -->
+            <a href="./appointment.html" class="hidden md:inline-block bg-gold text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-gold_hover transition shadow-[0_4px_14px_0_rgba(212,175,55,0.39)] hover:-translate-y-0.5">
+                Book Appointment
+            </a>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-white text-3xl focus:outline-none transition-colors duration-300" id="mobile-menu-btn">
+            <button class="md:hidden text-white text-2xl" id="mobile-menu-btn">
                 <i class="ph ph-list"></i>
             </button>
-        </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full h-screen bg-navy/95 backdrop-blur-lg flex-col items-center justify-center space-y-8 z-40 transition-all duration-300">
-            <a href="index.html" class="text-2xl font-playfair font-medium text-white hover:text-gold transition mobile-link">Home</a>
-            <a href="about.html" class="text-2xl font-playfair font-medium text-white hover:text-gold transition mobile-link">About</a>
-            <a href="treatments.html" class="text-2xl font-playfair font-medium text-white hover:text-gold transition mobile-link">Treatments</a>
-            <a href="#faq" class="text-2xl font-playfair font-medium text-white hover:text-gold transition mobile-link">FAQ</a>
-            <a href="#contact" class="bg-gold text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gold_hover transition mt-4 mobile-link">Book Appointment</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
+        <!-- Background Image (Simulating Video) -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" alt="Luxury Clinic" class="hero-bg-photo w-full h-full object-cover" />
             <div class="absolute inset-0 bg-navy/50 mix-blend-multiply"></div>
@@ -158,23 +143,23 @@
             <p class="reveal reveal-delay-2 text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light">
                 Advanced dental care delivered with compassion, precision, and world-class technology in a luxurious environment.
             </p>
-            
-            <!-- Hero Buttons -->
-            <div class="reveal reveal-delay-3 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 flex-wrap">
-                <a href="#contact" class="bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-gold_hover transition w-full sm:w-auto text-center shadow-lg hover:shadow-gold/30">
+            <div class="reveal reveal-delay-3 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <!-- Linked to appointment.html -->
+                <a href="./appointment.html" class="bg-gold text-white px-8 py-4 rounded-full font-medium hover:bg-gold_hover transition w-full sm:w-auto text-center">
                     Book Appointment
                 </a>
-                <a href="treatments.html" class="glass-dark text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition w-full sm:w-auto text-center border border-white/20">
+                <a href="./treatments.html" class="glass-dark text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition w-full sm:w-auto text-center border border-white/20">
                     Explore Treatments
                 </a>
             </div>
 
             <!-- Address Section -->
             <div class="reveal reveal-delay-3 mt-12 flex justify-center px-4">
-                <div class="inline-flex items-center space-x-3 text-center py-3 px-6 md:px-8 rounded-full border border-gold/50 glass-dark flex-col md:flex-row gap-2 md:gap-0">
+                <div class="inline-flex items-center space-x-3 text-center py-3 px-8 rounded-full border border-gold/50 glass-dark">
                     <i class="ph-fill ph-map-pin text-2xl text-gold shrink-0"></i>
-                    <span class="text-white font-playfair font-medium tracking-wide text-sm md:text-base">
-                        Address: Dr.no:24-79-3/5, First floor, Sanath nagar, Near Ambedkar statue, Gajuwaka, Vsp-530026
+                    <span class="text-white font-playfair font-medium tracking-wide text-base md:text-lg">
+                        Address: Dr.no:24-79-3/5, First floor, Sanath nagar, Near Ambedkar statue, Opp.Ambedkar Colony, Gajuwaka, Vsp-530026
+
                     </span>
                 </div>
             </div>
@@ -186,67 +171,67 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - Treatments Updated to reflect business card -->
     <section id="services" class="py-24 bg-light">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
                 <div class="max-w-2xl">
                     <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Our Expertise</h2>
-                    <h3 class="text-4xl font-playfair font-bold text-navy">Our Treatments</h3>
+                    <h3 class="text-4xl font-playfair font-bold text-navy">Key Treatments</h3>
                 </div>
-                <a href="treatments.html" class="mt-6 md:mt-0 text-navy font-medium flex items-center hover:text-gold transition">
+                <a href="./treatments.html" class="mt-6 md:mt-0 text-navy font-medium flex items-center hover:text-gold transition">
                     View All Services <i class="ph ph-arrow-right ml-2"></i>
                 </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Service 1 -->
-                <div class="reveal group relative rounded-3xl overflow-hidden cursor-pointer bg-white shadow-sm hover:shadow-xl transition-shadow" onclick="window.location.href='treatments.html'">
+                <!-- Service 1: Dental Checkup -->
+                <div class="reveal group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='./treatments.html'">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dea?w=500&auto=format&fit=crop" alt="Implants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=500&auto=format&fit=crop" alt="Checkup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6 relative bg-white">
-                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Dental Implants</h4>
-                        <p class="text-sm text-gray-500 mb-4">Permanent, natural-looking tooth replacements.</p>
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Dental Checkup</h4>
+                        <p class="text-sm text-gray-500 mb-4">Comprehensive oral exam and consultation.</p>
                         <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
                             <i class="ph ph-arrow-up-right"></i>
                         </div>
                     </div>
                 </div>
-                <!-- Service 2 -->
-                <div class="reveal reveal-delay-1 group relative rounded-3xl overflow-hidden cursor-pointer bg-white shadow-sm hover:shadow-xl transition-shadow" onclick="window.location.href='treatments.html'">
+                <!-- Service 2: Scaling & Polishing -->
+                <div class="reveal reveal-delay-1 group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='./treatments.html'">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1598256989800-fea5f6109968?w=500&auto=format&fit=crop" alt="Smile Makeover" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=500&auto=format&fit=crop" alt="Scaling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6 relative bg-white">
-                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Smile Makeover</h4>
-                        <p class="text-sm text-gray-500 mb-4">Complete cosmetic transformations for confidence.</p>
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Scaling & Polishing</h4>
+                        <p class="text-sm text-gray-500 mb-4">Professional cleaning for a healthy smile.</p>
                         <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
                             <i class="ph ph-arrow-up-right"></i>
                         </div>
                     </div>
                 </div>
-                <!-- Service 3 -->
-                <div class="reveal reveal-delay-2 group relative rounded-3xl overflow-hidden cursor-pointer bg-white shadow-sm hover:shadow-xl transition-shadow" onclick="window.location.href='treatments.html'">
+                <!-- Service 3: Teeth Fillings -->
+                <div class="reveal reveal-delay-2 group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='./treatments.html'">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&auto=format&fit=crop" alt="Invisible Aligners" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=500&auto=format&fit=crop" alt="Fillings" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6 relative bg-white">
-                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Invisible Aligners</h4>
-                        <p class="text-sm text-gray-500 mb-4">Straighten teeth discreetly without metal braces.</p>
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Teeth Fillings</h4>
+                        <p class="text-sm text-gray-500 mb-4">Seamless, natural-looking restorations.</p>
                         <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
                             <i class="ph ph-arrow-up-right"></i>
                         </div>
                     </div>
                 </div>
-                <!-- Service 4 -->
-                <div class="reveal reveal-delay-3 group relative rounded-3xl overflow-hidden cursor-pointer bg-white shadow-sm hover:shadow-xl transition-shadow" onclick="window.location.href='treatments.html'">
+                <!-- Service 4: Root Canal Treatment -->
+                <div class="reveal reveal-delay-3 group relative rounded-3xl overflow-hidden cursor-pointer bg-white" onclick="window.location.href='./treatments.html'">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&auto=format&fit=crop" alt="Veneers" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=500&auto=format&fit=crop" alt="Root Canal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6 relative bg-white">
-                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Porcelain Veneers</h4>
-                        <p class="text-sm text-gray-500 mb-4">Ultra-thin shells for a flawless, bright smile.</p>
+                        <h4 class="text-xl font-playfair font-bold text-navy mb-2">Root Canal</h4>
+                        <p class="text-sm text-gray-500 mb-4">Advanced endodontic therapy.</p>
                         <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-white transition-colors">
                             <i class="ph ph-arrow-up-right"></i>
                         </div>
@@ -258,6 +243,7 @@
 
     <!-- Stats Section -->
     <section class="py-20 bg-navy relative overflow-hidden">
+        <!-- Subtle Pattern -->
         <div class="absolute inset-0 opacity-5">
             <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -270,12 +256,12 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-white/10">
-                <div class="reveal mb-6 md:mb-0">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+                <div class="reveal">
                     <div class="text-4xl md:text-5xl font-playfair font-bold text-gold mb-2"><span class="counter" data-target="15">0</span>+</div>
                     <div class="text-white/80 text-sm font-medium uppercase tracking-wider">Years Experience</div>
                 </div>
-                <div class="reveal reveal-delay-1 mb-6 md:mb-0">
+                <div class="reveal reveal-delay-1">
                     <div class="text-4xl md:text-5xl font-playfair font-bold text-gold mb-2"><span class="counter" data-target="10000">0</span>+</div>
                     <div class="text-white/80 text-sm font-medium uppercase tracking-wider">Happy Patients</div>
                 </div>
@@ -299,7 +285,8 @@
                 <!-- Doctor Image -->
                 <div class="md:w-1/2 reveal w-full">
                     <div class="relative rounded-[2rem] overflow-hidden aspect-[4/5] mx-auto max-w-md shadow-2xl">
-                        <img src="./pics/pic1.png" alt="Dr. Krupavathi" class="w-full h-full object-cover">
+                        <!-- High quality portrait of a female doctor -->
+                        <img src="./pics/pic1.png" alt="Dr. Dr. Krupavathi" class="w-full h-full object-cover">
                         <div class="absolute inset-0 border-4 border-gold/30 rounded-[2rem] m-4 pointer-events-none"></div>
                     </div>
                 </div>
@@ -320,12 +307,12 @@
                     
                     <div class="flex items-center space-x-6 md:space-x-10">
                         <div class="flex flex-col">
-                            <span class="font-bold text-navy text-xl md:text-2xl"> BDS, MDS <br><span class="text-lg">(Oral Medicine & Radiology)</span></span>
+                            <span class="font-bold text-navy text-2xl"> BDS, MDS <br>(Oral Medicine & Radiology)<br></span>
                             <span class="text-sm text-gray-500 uppercase tracking-wider font-medium mt-1">Qualifications</span>
                         </div>
-                        <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
+                        <div class="w-px h-12 bg-gray-200"></div>
                         <div class="flex flex-col">
-                            <span class="font-bold text-navy text-xl md:text-2xl">15+</span>
+                            <span class="font-bold text-navy text-2xl">15+</span>
                             <span class="text-sm text-gray-500 uppercase tracking-wider font-medium mt-1">Years Experience</span>
                         </div>
                     </div>
@@ -347,34 +334,34 @@
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-center text-navy font-medium">
-                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4 shrink-0">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
                                 <i class="ph ph-check"></i>
                             </div>
                             3D CBCT Scanner for Precision Imaging
                         </li>
                         <li class="flex items-center text-navy font-medium">
-                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4 shrink-0">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
                                 <i class="ph ph-check"></i>
                             </div>
                             Intraoral Digital Scanners (No messy impressions)
                         </li>
                         <li class="flex items-center text-navy font-medium">
-                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4 shrink-0">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
                                 <i class="ph ph-check"></i>
                             </div>
                             Laser Dentistry for Painless Procedures
                         </li>
                         <li class="flex items-center text-navy font-medium">
-                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4 shrink-0">
+                            <div class="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold mr-4">
                                 <i class="ph ph-check"></i>
                             </div>
                             CAD/CAM Digital Smile Design
                         </li>
                     </ul>
                 </div>
-                <div class="lg:w-1/2 relative reveal reveal-delay-1 w-full">
-                    <div class="absolute inset-0 bg-gold rounded-3xl translate-x-4 translate-y-4 opacity-20 hidden md:block"></div>
-                    <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&auto=format&fit=crop" alt="Dental Technology" class="relative rounded-3xl z-10 w-full h-[300px] md:h-[500px] object-cover shadow-2xl">
+                <div class="lg:w-1/2 relative reveal reveal-delay-1">
+                    <div class="absolute inset-0 bg-gold rounded-3xl translate-x-4 translate-y-4 opacity-20"></div>
+                    <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&auto=format&fit=crop" alt="Dental Technology" class="relative rounded-3xl z-10 w-full h-[500px] object-cover shadow-2xl">
                 </div>
             </div>
         </div>
@@ -382,7 +369,7 @@
 
     <!-- FAQ Section -->
     <section id="faq" class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+        <div class="max-w-44xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-2">Have Questions?</h2>
                 <h3 class="text-4xl font-playfair font-bold text-navy">Frequently Asked Questions</h3>
@@ -424,7 +411,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 relative overflow-hidden mx-4 md:mx-auto max-w-7xl rounded-[3rem] mb-24 bg-navy scroll-mt-24" id="contact">
+    <section class="py-20 relative overflow-hidden mx-4 md:mx-auto max-w-7xl rounded-[3rem] mb-24 bg-navy" id="contact">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" alt="Clinic interior" class="w-full h-full object-cover opacity-20" />
         </div>
@@ -433,14 +420,15 @@
             <p class="text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
                 Experience world-class dental care in a luxurious, relaxing environment. Schedule your consultation today and take the first step towards a healthier, more beautiful smile.
             </p>
-            <a href="tel:+18001234567" class="inline-block bg-gold text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gold_hover transition shadow-lg hover:-translate-y-1">
-                Call Us to Book
+            <!-- Linked to appointment.html -->
+            <a href="/appointment.html" class="inline-block bg-gold text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-gold_hover transition shadow-lg hover:-translate-y-1">
+                Book Your Consultation
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="footer" class="bg-[#05111D] pt-20 pb-10 border-t border-white/10 scroll-mt-24">
+    <!-- Footer - Treatments link list updated -->
+    <footer class="bg-[#05111D] pt-20 pb-10 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <!-- Brand -->
@@ -463,18 +451,18 @@
                     <h4 class="text-white font-playfair font-bold text-lg mb-6">Quick Links</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="about.html" class="hover:text-gold transition">About Hospital</a></li>
-                        <li><a href="#contact" class="hover:text-gold transition">Book Appointment</a></li>
+                        <li><a href="/appointment.html" class="hover:text-gold transition">Book Appointment</a></li>
                     </ul>
                 </div>
 
-                <!-- Treatments -->
+                <!-- Treatments - Updated with business card items -->
                 <div>
                     <h4 class="text-white font-playfair font-bold text-lg mb-6">Treatments</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="treatments.html" class="hover:text-gold transition">Dental Implants</a></li>
-                        <li><a href="treatments.html" class="hover:text-gold transition">Invisible Aligners</a></li>
-                        <li><a href="treatments.html" class="hover:text-gold transition">Smile Makeover</a></li>
                         <li><a href="treatments.html" class="hover:text-gold transition">Root Canal Treatment</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Braces & Aligners</a></li>
+                        <li><a href="treatments.html" class="hover:text-gold transition">Scaling & Polishing</a></li>
                         <li><a href="treatments.html" class="hover:text-gold transition">Kids Dentistry</a></li>
                     </ul>
                 </div>
@@ -485,7 +473,7 @@
                     <ul class="space-y-4 text-sm text-gray-400">
                         <li class="flex items-start">
                             <i class="ph ph-map-pin text-gold mt-1 mr-3 text-lg"></i>
-                            <span data-config="contact-address">Dr.no:24-79-3/5, First floor, Sanath nagar, Near Ambedkar statue, Gajuwaka, Vsp-530026</span>
+                            <span data-config="contact-address">123 Luxury Avenue, Premium District, City, Country</span>
                         </li>
                         <li class="flex items-center">
                             <i class="ph ph-phone text-gold mr-3 text-lg"></i>
@@ -524,16 +512,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Navbar & Mobile Menu Variables
+            // Navbar Scroll Effect
             const navbar = document.getElementById('navbar');
             const navLogo = document.getElementById('nav-logo');
             const navLinks = document.getElementById('nav-links');
             const mobileBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            let isMobileMenuOpen = false;
 
-            // Navbar Scroll Effect
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     navbar.classList.add('glass', 'shadow-sm');
@@ -543,11 +527,8 @@
                     navLogo.classList.add('text-navy');
                     navLinks.classList.remove('text-white');
                     navLinks.classList.add('text-navy');
-                    
-                    if (!isMobileMenuOpen) {
-                        mobileBtn.classList.remove('text-white');
-                        mobileBtn.classList.add('text-navy');
-                    }
+                    mobileBtn.classList.remove('text-white');
+                    mobileBtn.classList.add('text-navy');
                 } else {
                     navbar.classList.remove('glass', 'shadow-sm');
                     navbar.classList.add('py-4');
@@ -556,43 +537,9 @@
                     navLogo.classList.remove('text-navy');
                     navLinks.classList.add('text-white');
                     navLinks.classList.remove('text-navy');
-                    
-                    if (!isMobileMenuOpen) {
-                        mobileBtn.classList.add('text-white');
-                        mobileBtn.classList.remove('text-navy');
-                    }
-                }
-            });
-
-            // Toggle Mobile Menu
-            const toggleMenu = () => {
-                isMobileMenuOpen = !isMobileMenuOpen;
-                if (isMobileMenuOpen) {
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('flex');
-                    mobileBtn.innerHTML = '<i class="ph ph-x"></i>';
-                    mobileBtn.classList.remove('text-navy');
                     mobileBtn.classList.add('text-white');
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                } else {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('flex');
-                    mobileBtn.innerHTML = '<i class="ph ph-list"></i>';
-                    if (window.scrollY > 50) {
-                        mobileBtn.classList.add('text-navy');
-                        mobileBtn.classList.remove('text-white');
-                    }
-                    document.body.style.overflow = '';
+                    mobileBtn.classList.remove('text-navy');
                 }
-            };
-
-            mobileBtn.addEventListener('click', toggleMenu);
-
-            // Close Mobile Menu when clicking a link
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (isMobileMenuOpen) toggleMenu();
-                });
             });
 
             // Scroll Reveal Animation (Intersection Observer)

@@ -24,8 +24,8 @@ const SITE_CONFIG = {
   },
 
   contact: {
-    phone: "7330710764",
-    whatsappnumber: "7330710764",
+    phone: "+917330710764",
+    whatsappnumber: "917330710764",
     email: "krupasdentalclinic@gmail.com",
     address: "Dr.no:24-79-3/5, First floor, Sanath nagar, Near Ambedkar statue, Opp. Ambedkar Colony, Gajuwaka, Vsp-530026",
     addressShort: "Sanath nagar, Gajuwaka", // used in tighter spaces
