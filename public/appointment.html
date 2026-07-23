@@ -111,11 +111,22 @@
                 Book Appointment
             </a>
 
-            <button class="md:hidden text-navy text-2xl">
+            <button class="md:hidden text-navy text-2xl" id="mobile-menu-btn">
                 <i class="ph ph-list"></i>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-navy/98 backdrop-blur-md hidden flex-col items-center justify-center space-y-8 md:hidden">
+        <a href="index.html" class="mobile-nav-link text-white text-2xl font-playfair font-medium hover:text-gold transition">Home</a>
+        <a href="about.html" class="mobile-nav-link text-white text-2xl font-playfair font-medium hover:text-gold transition">About</a>
+        <a href="treatments.html" class="mobile-nav-link text-white text-2xl font-playfair font-medium hover:text-gold transition">Treatments</a>
+        <a href="index.html#faq" class="mobile-nav-link text-white text-2xl font-playfair font-medium hover:text-gold transition">FAQ</a>
+        <a href="./appointment.html" class="mobile-nav-link bg-gold text-white px-8 py-3 rounded-full font-medium hover:bg-gold_hover transition mt-4">
+            Book Appointment
+        </a>
+    </div>
 
     <!-- Header Section -->
     <section class="pt-32 pb-12 bg-white border-b border-gray-100">
@@ -223,7 +234,7 @@
                                 </select>
                             </div>
                             <!-- Date & Time -->
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="space-y-2">
                                     <label class="text-sm font-medium text-navy">Preferred Date <span class="text-red-500">*</span></label>
                                     <input type="date" id="date-input" required class="w-full bg-light border border-gray-200 rounded-xl px-4 py-3 text-navy focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors">
@@ -330,7 +341,43 @@
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = mobileBtn.querySelector('i');
+
+            const openMobileMenu = () => {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+                mobileMenuIcon.classList.remove('ph-list');
+                mobileMenuIcon.classList.add('ph-x');
+            };
+            const closeMobileMenu = () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+                mobileMenuIcon.classList.remove('ph-x');
+                mobileMenuIcon.classList.add('ph-list');
+            };
+
+            mobileBtn.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden')) {
+                    openMobileMenu();
+                } else {
+                    closeMobileMenu();
+                }
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) closeMobileMenu();
+            });
+
             // Reveal Animations
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries, observer) => {
