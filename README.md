@@ -1,123 +1,99 @@
-# Krupa's Dental Hospital — Website + Appointment Backend
+# 🦷 Krupa's Dental Hospital — Modern Care. Smarter Booking.
 
-A Node.js/Express backend for the dental hospital site, with:
-- A real appointment booking API (30-minute slots, Mon–Sat 9 AM–8 PM)
-- **No two people can ever book the same date + time** (enforced twice: once in
-  application logic for a friendly error message, and once at the database
-  level with a `UNIQUE` constraint as a hard safety net against race conditions)
-- A password-protected admin dashboard showing every booking — who, and at
-  what date/time — with the ability to cancel a booking (which frees the slot)
+🚀 **Live Demo:** [https://arasadaanishkarthik.github.io/Krupa-Dental/](https://arasadaanishkarthik.github.io/Krupa-Dental/)
 
-## 1. Install
+## 🏷️ Badges
 
-```bash
-npm install
-```
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-5-000000?logo=express&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/Frontend-GitHub%20Pages-222222?logo=github&logoColor=white)
+![License](https://img.shields.io/badge/License-ISC-blue)
 
-## 2. Configure your admin password
+## 🌟 About the Project
 
-A demo password is already set for you to try immediately:
-- Username: `admin`
-- Password: `admin123`
+**Krupa's Dental Hospital** is a modern dental clinic website combined with a real appointment booking backend. The project allows patients to view the dental hospital website, select an available date and time, provide their details, and book an appointment through the system. A protected admin dashboard allows the clinic administrator to manage appointments, view booking statistics, filter appointments, and cancel bookings. The backend uses **Node.js, Express, and SQLite**, with application-level and database-level protection against double booking.
 
-**Before putting this online, change it.** Generate a new hash:
+## ✨ Key Features
 
-```bash
-npm run hash-password -- "yourNewStrongPassword"
-```
+- 🦷 **Dental Hospital Website** — Modern responsive website for the clinic.
+- 📅 **Online Appointment Booking** — Patients can book available appointments directly.
+- ⏰ **30-Minute Time Slots** — Appointments are generated in 30-minute intervals.
+- 🗓️ **Clinic Schedule** — Booking availability is handled for Monday–Saturday, 9 AM–8 PM.
+- 🚫 **Double-Booking Protection** — Prevents two confirmed appointments from occupying the same date and time.
+- 🗄️ **SQLite Database** — Appointment data is stored locally in `data/dental.db`.
+- 🔐 **Protected Admin Dashboard** — Appointment management requires administrator authentication.
+- 📊 **Admin Statistics** — View total confirmed, today's, and upcoming appointments.
+- 🔎 **Appointment Filtering** — Filter bookings by date and status.
+- ❌ **Appointment Cancellation** — Admins can cancel bookings and free the corresponding time slot.
+- 🔄 **Automatic Dashboard Refresh** — The admin dashboard refreshes appointment information every 30 seconds.
+- 👨‍⚕️ **Centralized Clinic Information** — Doctor/owner and contact information can be managed from one configuration file.
+- 📱 **Responsive Frontend** — Designed for desktop and mobile browsing.
+- 🎨 **Modern Glassmorphism UI** — Uses a navy/gold visual style with translucent interface elements.
 
-Copy the printed line into `.env`, replacing the existing `ADMIN_PASSWORD_HASH`.
-Also change `SESSION_SECRET` in `.env` to any long random string.
+## 🛠️ Tech Stack
 
-## 3. Run it
+### Frontend
 
-```bash
-npm start
-```
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- Responsive web design
+- Glassmorphism styling
 
-Then open:
-- **Website:** http://localhost:3000
-- **Book an appointment:** http://localhost:3000/appointment.html
-- **Admin login:** http://localhost:3000/admin/login.html
+### Backend
 
-The database is a single file at `data/dental.db` (SQLite), created
-automatically on first run. No separate database server needed.
+- **Node.js**
+- **Express.js**
+- **Express Session**
+- **bcryptjs**
+- **dotenv**
 
-## How the "no double booking" rule works
+### Database
 
-1. When a patient picks a date on the booking form, the browser calls
-   `GET /api/appointments/slots?date=YYYY-MM-DD`, which returns every
-   30-minute slot for that day marked available or already booked.
-   Booked slots show as disabled in the dropdown.
-2. On submit, the browser calls `POST /api/appointments`. The server
-   re-checks that exact date+time isn't already taken (someone else could
-   have booked in the few seconds since the page loaded) and rejects with
-   a clear message if so.
-3. As a final safety net, the `appointments` table itself has a
-   `UNIQUE(date, time, status)` constraint, so even simultaneous requests
-   at the exact same instant can't both succeed.
+- **SQLite**
+- **better-sqlite3**
 
-## What the admin sees
+### Deployment
 
-Log in at `/admin/login.html` to reach the dashboard, which shows:
-- Every appointment: **patient name, phone, email, treatment, date, and time**
-- Quick stats: total confirmed, today's appointments, upcoming
-- Filters by date and status
-- A **Cancel** button per booking (frees that time slot back up for others)
-- Auto-refreshes every 30 seconds
+- **GitHub Pages** for the provided live frontend
+- Node.js-compatible hosting for the full backend
 
-## Editing owner & contact details (do this once, applies everywhere)
+## 📁 Project Structure
 
-Open **`public/js/site-config.js`** — every owner and contact detail on the
-whole site lives in this one file:
-
-- `owner.name`, `owner.title`, `owner.qualifications`, `owner.experience`,
-  `owner.photo`, `owner.bio` (array of paragraphs) → shown on the About page
-- `contact.phone`, `contact.email`, `contact.address`, `contact.hoursWeekday`,
-  `contact.hoursSunday`, WhatsApp/tel links → shown in every page's footer
-  and the appointment page's sidebar
-
-Change a value in that file, save, and it updates on every page next time
-it's loaded — no need to hunt through 4 HTML files. `public/js/apply-site-config.js`
-is the small script that reads the config and fills it in; you shouldn't need
-to touch that file.
-
-## Project structure
-
-```
-server.js              Express app entrypoint
-db.js                   SQLite setup (creates data/dental.db, the appointments table)
-slots.js                Clinic hours + 30-min slot generation logic
-routes/appointments.js  Public API: check slots, create a booking
-routes/admin.js         Admin login/logout + protected booking list/cancel APIs
-public/                 Your website (static files, served as-is)
-  js/site-config.js        ← EDIT THIS to update owner/contact info everywhere
-  js/apply-site-config.js  Applies site-config.js to the page (don't need to edit)
-  admin/login.html      Admin login page
-  admin/dashboard.html  Admin dashboard
-scripts/hash-password.js  Helper to generate a new admin password hash
-.env                    Config: PORT, admin credentials, session secret
-```
-
-## Deploying
-
-This runs anywhere Node.js runs (a VPS, Render, Railway, a subdomain with
-Node support, etc.). Since it uses SQLite (a plain file), there's no separate
-database to provision — just make sure the `data/` folder is on persistent
-storage (not wiped on every deploy) so bookings aren't lost.
-
-Set the same environment variables from `.env` in your host's dashboard
-(`PORT` is usually assigned automatically by the host).
-
-## Fixes made to the original front-end files
-
-- Removed nav/footer links to `doctor.html` and `gallery.html`, which
-  didn't exist in the project and were dead links.
-- Fixed `.glass` navbar style in `index.html` — it was a fully opaque pale
-  yellow instead of a translucent glass effect.
-- Fixed the scrollbar track color in `index.html` (was a clashing bright
-  lime green, now a neutral tone matching the navy/gold theme).
-- Replaced the vague "Morning / Afternoon / Evening" time picker with real,
-  live 30-minute time slots that grey out once booked.
-- The booking form now actually saves to a database instead of just
-  showing a fake success message.
+```text
+Krupa-Dental/
+│
+├── data/
+│   └── dental.db                 # SQLite appointment database
+│
+├── public/
+│   ├── admin/
+│   │   ├── login.html            # Admin login page
+│   │   └── dashboard.html        # Appointment management dashboard
+│   │
+│   ├── js/
+│   │   ├── site-config.js        # Central clinic/owner/contact configuration
+│   │   └── apply-site-config.js  # Applies site configuration across pages
+│   │
+│   ├── index.html                # Main website homepage
+│   ├── appointment.html          # Patient appointment booking page
+│   └── ...                       # Other website assets/pages
+│
+├── routes/
+│   ├── appointments.js           # Appointment availability and booking APIs
+│   └── admin.js                  # Admin authentication and management APIs
+│
+├── scripts/
+│   └── hash-password.js          # Generates secure admin password hashes
+│
+├── .gitignore                    # Git ignored files
+├── db.js                         # SQLite database initialization
+├── package.json                  # Project dependencies and scripts
+├── package-lock.json             # Locked dependency versions
+├── server.js                     # Express server entry point
+├── slots.js                      # Clinic hours and slot generation logic
+└── README.md                     # Project documentation
